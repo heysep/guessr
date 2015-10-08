@@ -73,6 +73,9 @@ module Guessr
       @game.show_progress if @game.last_guess
       guess = prompt("What is your new guess? (1-1000)", /^\d{1,3}$/)
       @game.make_guess(guess.to_i)
+      binding.pry
+      prompt_exit = prompt("Would you like to exit (y/n)?", /^[yn]$/i)
+      exit(status=true) if prompt_exit == "y"
     end
 
     def play_game
